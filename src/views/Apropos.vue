@@ -3,7 +3,8 @@ import {ref} from 'vue';
 import Sasukette from '../assets/images/Sasukette.png';
 import Dédé from '../assets/images/Dédé.webp'
 import Mathieu from '../assets/images/Mathieu.jpg'
-const devTeam = ref [
+
+const devTeamMembers = ref [
   {
     firstName : 'Mathieu',
     LastName : 'Duvillers',
@@ -25,11 +26,14 @@ const devTeam = ref [
     bio : 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime nisi corporis minima laudantium voluptate, dolores libero harum repellat ducimus voluptates, consequuntur, neque magni eveniet eligendi.',
     avatar : Sasukette
   }
-]
+];
 </script>
 
 <template>
   <div>
-    
+    <h1 class="text-bold text-gray-900">À propos</h1>
+    <div v-for="devTeamMember in devTeamMembers" :key="devTeamMember
+    .role">
+    </div>
   </div>
 </template>
