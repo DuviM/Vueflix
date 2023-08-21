@@ -1,15 +1,19 @@
 <script setup>
   import {ref} from 'vue';
-  import { RouterView } from 'vue-router';
+  import { RouterLink } from 'vue-router';
   const isAuthenticated = ref(true);
 </script>
 
 <template>
-  <RouterView />
+  <p id="logo">VueFlix</p>
   <nav>
     <ul>
-      <li>Accueil</li>
-      <li>A propos</li>
+      <li>
+        <RouterLink :to = "{name : 'Acceuil'}">Accueil</RouterLink>
+      </li>
+      <li>
+        <RouterLink :to = "{name : 'Apropos'}">Apropos</RouterLink>
+      </li>
       <li v-if="isAuthenticated">
         <img class="avatar" src="https://xsgames.co/randomusers/avatar.php?g=male">
         <span>UserName</span>
