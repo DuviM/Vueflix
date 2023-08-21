@@ -4,7 +4,10 @@
 </script>
 
 <template>
-  <p>Copyrigth © {{ new Date().getFullYear() }}. Catalogue de {{ FilmCount }} films.</p>
+  <footer class="text-center text-gray-900 ">
+    <hr>
+    <p class="my-6">Copyrigth © {{ new Date().getFullYear() }}. Catalogue de <strong>{{ FilmCount }}</strong> films.</p>
+  </footer>
 </template>
 
 <style scoped>
