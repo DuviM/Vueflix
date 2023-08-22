@@ -1,6 +1,13 @@
 <script setup>
   import {ref} from 'vue';
-  const FilmCount = ref(666)
+  import { $fetch } from 'ohmyfetch';
+  
+  const FilmCount = ref([]);
+  
+  $fetch('https://api.vueflix.boxydev.com/movies').then(response =>{
+    FilmCount.value = response.length;
+  });
+  
 </script>
 
 <template>
