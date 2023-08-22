@@ -6,17 +6,17 @@ const router = createRouter({
     {
       name : 'Acceuil',
       path : '/',
-      component : () => ('../views/Acceuil.vue')
+      component : () => import('../views/Acceuil.vue')
     },
     {
       name : 'Apropos',
       path : '/a-propos',
-      component : () => ('../views/Apropos.vue')
+      component : () => import('../views/Apropos.vue')
     },
     {
       name : 'Films',
       path : '/films',
-      component : () => ('../views/Films.vue')
+      component : () => import('../views/Films.vue')
     }
   ]
 })
