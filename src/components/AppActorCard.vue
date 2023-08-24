@@ -20,8 +20,11 @@
           <img :src="props.actor.profile_path" :alt="props.actor.original_name + 'photo'" class="object-cover h-[375px] rounded-t-lg ">     
       </div>
       <div class="flex flex-col justify-between h-full">
-        <h5 class="font-bold mt-2 text-center">{{ props.actor.original_name }} <span class="text-sm font-thin">{{ age() }} ans</span></h5>
-        <p class="mb-2 text-center">as {{ props.actor.character }}</p>
+        <div>
+          <h5 class="font-bold mt-2 text-center">{{ props.actor.original_name }} <span class="text-sm font-thin">{{ age() }} ans</span></h5>
+          <p class="mb-2 text-center">as {{ props.actor.character }}</p>
+        </div>
+        
       </div>
     </div>
   </div>

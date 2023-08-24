@@ -13,7 +13,7 @@
 
 <template>
   <h1 class="text-bold text-3xl text-gray-900 text-center my-10">FILMS</h1>
-  <div class=" my-24 flex flex-col flex-wrap sm:flex-row justify-evenly mx-12">
+  <div class=" my-6 flex flex-col flex-wrap sm:flex-row justify-evenly mx-12">
     <AppMovieCard v-for="item in movieLibrary" :key="item.id" :movie="item"></AppMovieCard>
   </div>
 </template>
