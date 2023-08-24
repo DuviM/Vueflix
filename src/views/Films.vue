@@ -5,7 +5,7 @@
 
   const movieLibrary = ref([]);
 
-  $fetch('https://api.vueflix.boxydev.com/movies').then(response =>{
+  $fetch('http://localhost:3000/movies').then(response =>{
     movieLibrary.value = response;
   });
   

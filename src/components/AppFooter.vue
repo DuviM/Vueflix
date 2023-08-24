@@ -4,7 +4,7 @@
   
   const FilmCount = ref([]);
   
-  $fetch('https://api.vueflix.boxydev.com/movies').then(response =>{
+  $fetch('http://localhost:3000/movies').then(response =>{
     FilmCount.value = response.length;
   });
   

@@ -16,7 +16,7 @@
     (newId) => console.log(newId)
     );
 
-  $fetch(`https://api.vueflix.boxydev.com/genres/`).then(response =>{
+  $fetch(`http://localhost:3000/genres/`).then(response =>{
     genresLibrary.value = response;
   });
 
