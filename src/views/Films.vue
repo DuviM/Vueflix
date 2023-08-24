@@ -8,7 +8,6 @@
   $fetch('https://api.vueflix.boxydev.com/movies').then(response =>{
     movieLibrary.value = response;
   });
-
   
 </script>
 

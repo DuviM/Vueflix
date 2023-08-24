@@ -7,7 +7,8 @@
 
 <template>
   <header class="bg-gray-900 flex justify-between items-center px-6 py-4">
-    <p id="logo" class="text-3xl m-0 text-gray-50 font-black">Vue<span class="text-gray-50 bg-red-600 rounded-md px-2 py-1 ml-1">Flisk</span></p>
+    <p id="logo" class="text-3xl m-0 text-gray-50 font-black">
+      <RouterLink :to = "{name : 'Acceuil'}">Vue<span class="text-gray-50 bg-red-600 rounded-md px-2 py-1 ml-1">Flisk</span></RouterLink></p>
     <nav>
       <ul class="flex items-center list-none grid-flow-row text-gray-50">
         <li class="flex items-center my-0 mx-4">
