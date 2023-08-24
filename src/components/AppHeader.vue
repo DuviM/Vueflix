@@ -11,10 +11,7 @@
   const isAuthenticated = ref(false);
   const genresLibrary = ref([]);
 
-  watch(
-    () => route.params.id,
-    (newId) => console.log(newId)
-    );
+
 
   $fetch(`http://localhost:3000/genres/`).then(response =>{
     genresLibrary.value = response;
@@ -35,9 +32,9 @@
           <RouterLink :to = "{name : 'Films'}">Films</RouterLink>          
         </li>
         <li class="flex items-center my-0 mx-4">
-          <Menu as="div" class="relative inline-block text-left z-50">
+          <Menu as="div" class="relative inline-block text-left z-50" v-slot="{close}">
             <div>
-              <MenuButton class="inline-flex w-full justify-center px-4 py-2 text-sm font-medium text-gray-50 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-50 focus-visible:ring-opacity-75">
+              <MenuButton class="inline-flex w-full justify-center px-4 py-2 font-medium text-gray-50 hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-50 focus-visible:ring-opacity-75">
                 Genres
                 <ChevronDownIcon class="ml-2 -mr-1 h-5 w-5 text-gray-200 hover:text-gray-100" aria-hidden="true"/>
               </MenuButton>
@@ -49,14 +46,14 @@
               leave-active-class="transition duration-75 ease-in"
               leave-from-class="transform scale-100 opacity-100"
               leave-to-class="transform scale-95 opacity-0">
-              <MenuItems class="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-gray-50 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <MenuItems class="absolute right-0 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-gray-50 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" @click="close">
                 <div class="px-1 py-1">
                   <MenuItem v-for="item in genresLibrary" :key="item.id" as="template" v-slot="{active}">
                   <RouterLink :to = "{name : 'Genres', params: {id: item.id}}" :class="[
                   active ? 'bg-gray-500 text-gray-50' : 'text-gray-900',
                   'group flex w-full items-center rounded-md px-2 py-2 text-sm',
-                ]">{{item.name}}</RouterLink>
-                </MenuItem>
+                  ]">{{item.name}}</RouterLink>
+                  </MenuItem>
                 </div>
               </MenuItems>
             </Transition>
