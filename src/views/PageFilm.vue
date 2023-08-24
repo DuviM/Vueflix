@@ -12,6 +12,7 @@
   const route = useRoute();
   const singleMovieObject = ref({}); 
   const showModal = ref(false); 
+  const selected = ref(null);
   
   onMounted(() => console.log("c'i lu merde"));
   
@@ -90,8 +91,8 @@
       </div>
     </div>
     <div class="text-gray-900 text-center text-2xl mt-5 font-extrabold">Casting</div>
-    <div class="h-1/2 w-full flex justify-between px-12">
-      <AppActorCard v-for="item in singleMovieObject.actors" :key="item.id" :actor ="item"></AppActorCard>
+    <div class="h-1/2 w-full flex flex-col flex-wrap sm:flex-row justify-evenly px-12">
+      <AppActorCard v-for="item in singleMovieObject.actors" :key="item.id" :actor ="item" @opened="selected = $event.id" :open="selected === singleMovieObject.actors.id"></AppActorCard>
     </div>
   </div>
 </template>
