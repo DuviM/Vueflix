@@ -2,6 +2,7 @@
   import { onMounted, watch, ref, computed } from 'vue';
   import { useRoute } from 'vue-router';
   import { $fetch } from 'ohmyfetch';
+  import AppModalBa from '../components/AppModalBa.vue';
   import AppActorCard from '../components/AppActorCard.vue';
   import * as dayjs from 'dayjs';
   import 'dayjs/locale/fr';
@@ -9,7 +10,8 @@
   dayjs.locale('fr');
 
   const route = useRoute();
-  const singleMovieObject = ref({});  
+  const singleMovieObject = ref({}); 
+  const showModal = ref(false); 
   
   onMounted(() => console.log("c'i lu merde"));
   
@@ -58,15 +60,25 @@
                 'border-red-500' : note <= 60
                 }">{{ note }} %
               </span>
-              <span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 stroke-gray-50 stroke-1 ml-6 mr-4">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
-                </svg>
-              </span>
-              <span class="text-gray-50">
-                voir la bande annonce
-              </span>
+              <button id="show-modal" @click="showModal = true" class="flex items-center">
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 stroke-gray-50 stroke-1 ml-6 mr-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
+                  </svg>
+                </span>
+                <span class="text-gray-50">
+                  voir la bande annonce
+                </span>
+              </button>              
+              <Teleport to="body">
+                <AppModalBa :show="showModal" @close="showModal = false">
+                  <template #header>
+                    <h3 class="text-gray-900 text-center">Regardez la B.A. de <strong>{{ singleMovieObject.title }}</strong></h3>
+                  </template>
+                  <iframe width="100%" height="500" :src="`https://www.youtube.com/embed/${singleMovieObject.youtube}`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </AppModalBa>
+              </Teleport>
             </div>
             <div class="text-gray-50 italic font-extralight mb-5">"{{ singleMovieObject.tagline }}"</div>
             <div>
@@ -77,6 +89,7 @@
         </div>       
       </div>
     </div>
+    <div class="text-gray-900 text-center text-2xl mt-5 font-extrabold">Casting</div>
     <div class="h-1/2 w-full flex justify-between px-12">
       <AppActorCard v-for="item in singleMovieObject.actors" :key="item.id" :actor ="item"></AppActorCard>
     </div>

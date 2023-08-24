@@ -4,9 +4,9 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      name : 'Acceuil',
+      name : 'Accueil',
       path : '/',
-      component : () => import('../views/Acceuil.vue')
+      component : () => import('../views/Accueil.vue')
     },
     {
       name : 'Apropos',
@@ -22,6 +22,11 @@ const router = createRouter({
       name : 'PageFilm',
       path : '/page-film/:id',
       component : () => import('../views/PageFilm.vue')
+    },
+    {
+      name : 'Genres',
+      path : '/genres/:id',
+      component : () => import('../views/Genres.vue')
     }
 
   ]
