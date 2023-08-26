@@ -27,6 +27,11 @@ const router = createRouter({
       name : 'Genres',
       path : '/genres/:id',
       component : () => import('../views/Genres.vue')
+    },
+    {
+      name : 'Panier',
+      path : '/panier',
+      component : () => import('../views/Panier.vue')
     }
 
   ]

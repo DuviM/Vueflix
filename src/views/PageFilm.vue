@@ -92,7 +92,7 @@
     </div>
     <div class="text-gray-900 text-center text-2xl mt-5 font-extrabold">Casting</div>
     <div class="h-1/2 w-full flex flex-col flex-wrap sm:flex-row justify-evenly px-12">
-      <AppActorCard v-for="item in singleMovieObject.actors" :key="item.id" :actor ="item" @opened="selected = $event.id" :open="selected === singleMovieObject.actors.id"></AppActorCard>
+      <AppActorCard v-for="item in singleMovieObject.actors" :key="item.id" :actor ="item" @opened="selected = $event.id" :open="selected === item.id"></AppActorCard>
     </div>
   </div>
 </template>

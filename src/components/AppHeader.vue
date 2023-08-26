@@ -5,11 +5,15 @@
   import { $fetch } from 'ohmyfetch';
   import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
   import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+  import { Slide } from 'vue3-burger-menu'
   import AppButton from './AppButton.vue'
+  import { useCartStore } from '../stores/cart';
 
   const route = useRoute();
   const isAuthenticated = ref(false);
   const genresLibrary = ref([]);
+  const cartStore = useCartStore ()
+  // const store = useCartStore();
 
 
 
@@ -58,6 +62,9 @@
               </MenuItems>
             </Transition>
           </Menu>
+        </li>
+        <li class="flex items-center my-0 mx-4">
+          <RouterLink :to = "{name : 'Panier'}">Panier <span v-if="cartStore.cart.length > 0">: {{ cartStore.total }}</span></RouterLink>
         </li>
         <li class="flex items-center my-0 mx-4">
           <RouterLink :to = "{name : 'Apropos'}">À-propos</RouterLink>

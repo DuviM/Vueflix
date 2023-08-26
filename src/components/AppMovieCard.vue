@@ -2,6 +2,9 @@
   import {computed} from 'vue';
   import * as dayjs from 'dayjs';
   import 'dayjs/locale/fr';
+  import Appbutton from '../components/AppButton.vue'
+  import { useCartStore } from '../stores/cart';
+  
 
   dayjs.locale('fr');
 
@@ -14,6 +17,9 @@
   const note = computed(() => 
     Math.floor(props.movie.vote_average * 10)
   );
+
+  const store = useCartStore();
+
 </script>
 
 <template>
@@ -34,6 +40,10 @@
           <RouterLink :to = "{name : 'PageFilm', params: {id: movie.id}}">{{props.movie.original_title}}</RouterLink>          
         </h5>
         <p class="ml-2 capitalize mb-2">{{ formatedDate() }}</p>
+      </div>
+      <div class="flex items-center justify-center">
+        <Appbutton @click="store.add(movie)" v-if="!store.has(movie)" class="w-full rounded-t-none rounded-b-lg">Ajouter au panier</Appbutton>
+        <Appbutton @click="store.delete(movie)" v-if="store.has(movie)" class="w-full rounded-t-none rounded-b-lg ">Retirer du panier</Appbutton>
       </div>
     </div>
   </div>

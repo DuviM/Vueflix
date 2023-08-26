@@ -13,8 +13,10 @@
 
   const age = ref(() => new Date().getFullYear() - birthDate);
 
-  const showBio = () => emit('opened', props.actor);
-  // const props = defineProps(['user', 'open']);
+  const showBio = () => {
+    emit('opened', props.actor);
+  };
+  
 </script>
 
 <template>
@@ -30,8 +32,10 @@
         </div>
         <div class="flex items-center justify-center h-full w-full lg:w-1/3">
           <Appbutton @click="showBio" v-if="!open">Bio</Appbutton>
-          <p v-if="open" class="font-light text-xs text-left">{{ props.singleMovieObject.actors.biography }}</p>
         </div>
+      </div>
+      <div>
+        <p v-if="open" class="font-light text-xs mx-4 mb-4 text-left">{{ props.actor.biography }}</p>
       </div>
     </div>
   </div>
